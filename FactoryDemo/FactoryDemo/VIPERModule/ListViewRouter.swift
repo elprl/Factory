@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Factory
 
-final class ListViewRouter: RouterInterface {
+final class ListViewRouter: ListViewRouterInterface {
     weak var presenter: ListViewPresenterRouterInterface!
 }
 

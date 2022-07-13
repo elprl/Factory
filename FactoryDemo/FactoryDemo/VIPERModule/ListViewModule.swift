@@ -11,21 +11,30 @@ import Factory
 
 // MARK: - Router
 
-protocol ListViewRouterPresenterInterface: RouterPresenterInterface {
+protocol ListViewRouterInterface: ListViewRouterPresenterInterface {
+    var presenter: ListViewPresenterRouterInterface! { get set }
+}
+
+protocol ListViewRouterPresenterInterface: AnyObject {
     func showDetails(for animal: Animal) -> any View
 }
 
 // MARK: - Presenter
 
-protocol ListViewPresenterRouterInterface: PresenterRouterInterface {
+protocol ListViewPresenterInterface: ListViewPresenterRouterInterface, ListViewPresenterInteractorInterface, ListViewPresenterViewInterface {
+    var router: ListViewRouterPresenterInterface! { get set }
+    var interactor: ListViewInteractorPresenterInterface! { get set }
+}
+
+protocol ListViewPresenterRouterInterface: AnyObject {
 
 }
 
-protocol ListViewPresenterInteractorInterface: PresenterInteractorInterface {
+protocol ListViewPresenterInteractorInterface: AnyObject {
     func didLoad(animals: [Animal])
 }
 
-protocol ListViewPresenterViewInterface: PresenterViewInterface {
+protocol ListViewPresenterViewInterface: AnyObject {
     var viewModel: ListViewModel? { get set }
     func onAppear()
     func onBtnPress(animal: String)
@@ -33,7 +42,11 @@ protocol ListViewPresenterViewInterface: PresenterViewInterface {
 
 // MARK: - Interactor
 
-protocol ListViewInteractorPresenterInterface: InteractorPresenterInterface {
+protocol ListViewInteractorInterface: ListViewInteractorPresenterInterface {
+    var presenter: ListViewPresenterInteractorInterface! { get set }
+}
+
+protocol ListViewInteractorPresenterInterface: AnyObject {
     func fetchItems()
 }
 
@@ -66,8 +79,8 @@ extension SharedContainer {
             return vm
         }
         ListViewContainer.interactor.register { ListViewInteractor() }
-        ListViewContainer.presenter.register { ListViewPresenter() }
         ListViewContainer.router.register { ListViewRouter() }
+        ListViewContainer.presenter.register { ListViewPresenter() }
 
 #if DEBUG
         Decorator.decorate = {
@@ -79,9 +92,9 @@ extension SharedContainer {
 
 class ListViewContainer: SharedContainer {
     static let viewModel = Factory<ListViewModel>(scope: .shared) { ListViewModel() }
-    static let presenter = Factory<ListViewPresenter>(scope: .shared) { ListViewPresenter() }
-    static let interactor = Factory<ListViewInteractor>(scope: .shared) { ListViewInteractor() }
-    static let router = Factory<ListViewRouter>(scope: .shared) { ListViewRouter() }
+    static let presenter = Factory<ListViewPresenterInterface>(scope: .shared) { ListViewPresenter() }
+    static let interactor = Factory<ListViewInteractorInterface>(scope: .shared) { ListViewInteractor() }
+    static let router = Factory<ListViewRouterInterface>(scope: .shared) { ListViewRouter() }
 }
 
 final class ListViewModule {

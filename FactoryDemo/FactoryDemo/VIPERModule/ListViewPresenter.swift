@@ -8,7 +8,7 @@
 import Foundation
 import Factory
 
-class ListViewPresenter: PresenterInterface {
+class ListViewPresenter: ListViewPresenterInterface {
     var router: ListViewRouterPresenterInterface!
     var interactor: ListViewInteractorPresenterInterface!
     weak var viewModel: ListViewModel?
@@ -22,15 +22,15 @@ extension ListViewPresenter: ListViewPresenterInteractorInterface {
 
 extension ListViewPresenter: ListViewPresenterViewInterface {
     
-    @objc func onAppear() {
+    func onAppear() {
         interactor.fetchItems()
     }
     
-    @objc func onDisappear() {
+    func onDisappear() {
         
     }
     
-    @objc func onBtnPress(animal: String) {
+    func onBtnPress(animal: String) {
         print("\(animal) pressed")
     }
 }
@@ -39,20 +39,24 @@ extension ListViewPresenter: ListViewPresenterRouterInterface {
     
 }
 
-final class MockListViewPresenter: ListViewPresenter {
-//    var router: ListViewRouterPresenterInterface!
-//    var interactor: ListViewInteractorPresenterInterface!
-//    weak var viewModel: ListViewModel?
-
-    override func onAppear() {
-        print("Mocking onAppear")
-    }
-    
-    override func onDisappear() {
+final class MockListViewPresenter: ListViewPresenterInterface {
+    func didLoad(animals: [Animal]) {
         
     }
     
-    override func onBtnPress(animal: String) {
+    var router: ListViewRouterPresenterInterface!
+    var interactor: ListViewInteractorPresenterInterface!
+    weak var viewModel: ListViewModel?
+
+    func onAppear() {
+        print("Mocking onAppear")
+    }
+    
+    func onDisappear() {
+        
+    }
+    
+    func onBtnPress(animal: String) {
         print("\(animal) pressed")
     }
 }

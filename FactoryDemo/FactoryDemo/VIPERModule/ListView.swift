@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Factory
 
-struct ListView: View, ViewInterface {
+struct ListView: View {
     var presenter: ListViewPresenterViewInterface!
     @Injected(ListViewContainer.viewModel) private var viewModel
 
