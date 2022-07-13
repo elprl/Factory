@@ -19,6 +19,15 @@
 		4CEEC35C2849309C00C979B3 /* FactoryDemoApp+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEEC35B2849309C00C979B3 /* FactoryDemoApp+Injection.swift */; };
 		4CEEC35E284930DB00C979B3 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEEC35D284930DB00C979B3 /* Services.swift */; };
 		4CEEC3602849311000C979B3 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEEC35F2849311000C979B3 /* ContentViewModel.swift */; };
+		E18B2CED287ECFD400E4FC58 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18B2CE8287ECFBA00E4FC58 /* ListView.swift */; };
+		E18B2CEE287ECFD400E4FC58 /* ListViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18B2CE9287ECFBA00E4FC58 /* ListViewPresenter.swift */; };
+		E18B2CEF287ECFD400E4FC58 /* ListViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18B2CE7287ECFBA00E4FC58 /* ListViewInteractor.swift */; };
+		E18B2CF0287ECFD400E4FC58 /* ListViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18B2CEA287ECFBA00E4FC58 /* ListViewRouter.swift */; };
+		E18B2CF1287ECFD400E4FC58 /* AnimalEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18B2CE6287ECFBA00E4FC58 /* AnimalEntity.swift */; };
+		E18B2CF2287ECFD400E4FC58 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18B2CEB287ECFBA00E4FC58 /* ListViewModel.swift */; };
+		E18B2CF3287ECFD400E4FC58 /* ListViewModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18B2CEC287ECFBA00E4FC58 /* ListViewModule.swift */; };
+		E18B2CF7287ED0E700E4FC58 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18B2CF6287ED0E700E4FC58 /* ApiService.swift */; };
+		E18B2CF9287ED17B00E4FC58 /* VIPER.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18B2CF8287ED17B00E4FC58 /* VIPER.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +88,15 @@
 		4CEEC35B2849309C00C979B3 /* FactoryDemoApp+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FactoryDemoApp+Injection.swift"; sourceTree = "<group>"; };
 		4CEEC35D284930DB00C979B3 /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		4CEEC35F2849311000C979B3 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		E18B2CE6287ECFBA00E4FC58 /* AnimalEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalEntity.swift; sourceTree = "<group>"; };
+		E18B2CE7287ECFBA00E4FC58 /* ListViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewInteractor.swift; sourceTree = "<group>"; };
+		E18B2CE8287ECFBA00E4FC58 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		E18B2CE9287ECFBA00E4FC58 /* ListViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewPresenter.swift; sourceTree = "<group>"; };
+		E18B2CEA287ECFBA00E4FC58 /* ListViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewRouter.swift; sourceTree = "<group>"; };
+		E18B2CEB287ECFBA00E4FC58 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		E18B2CEC287ECFBA00E4FC58 /* ListViewModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModule.swift; sourceTree = "<group>"; };
+		E18B2CF6287ED0E700E4FC58 /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		E18B2CF8287ED17B00E4FC58 /* VIPER.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VIPER.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +161,7 @@
 		4CEEC347284927EE00C979B3 /* FactoryDemo */ = {
 			isa = PBXGroup;
 			children = (
+				E18B2CE5287ECFBA00E4FC58 /* VIPERModule */,
 				4CEEC348284927EE00C979B3 /* FactoryDemoApp.swift */,
 				4CEEC35B2849309C00C979B3 /* FactoryDemoApp+Injection.swift */,
 				4CEEC34A284927EE00C979B3 /* ContentView.swift */,
@@ -176,6 +195,22 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E18B2CE5287ECFBA00E4FC58 /* VIPERModule */ = {
+			isa = PBXGroup;
+			children = (
+				E18B2CF8287ED17B00E4FC58 /* VIPER.swift */,
+				E18B2CF6287ED0E700E4FC58 /* ApiService.swift */,
+				E18B2CE6287ECFBA00E4FC58 /* AnimalEntity.swift */,
+				E18B2CE7287ECFBA00E4FC58 /* ListViewInteractor.swift */,
+				E18B2CE8287ECFBA00E4FC58 /* ListView.swift */,
+				E18B2CE9287ECFBA00E4FC58 /* ListViewPresenter.swift */,
+				E18B2CEA287ECFBA00E4FC58 /* ListViewRouter.swift */,
+				E18B2CEB287ECFBA00E4FC58 /* ListViewModel.swift */,
+				E18B2CEC287ECFBA00E4FC58 /* ListViewModule.swift */,
+			);
+			path = VIPERModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,9 +330,18 @@
 			files = (
 				4CEEC34B284927EE00C979B3 /* ContentView.swift in Sources */,
 				4CEEC35E284930DB00C979B3 /* Services.swift in Sources */,
+				E18B2CF0287ECFD400E4FC58 /* ListViewRouter.swift in Sources */,
+				E18B2CED287ECFD400E4FC58 /* ListView.swift in Sources */,
+				E18B2CF1287ECFD400E4FC58 /* AnimalEntity.swift in Sources */,
 				4CEEC349284927EE00C979B3 /* FactoryDemoApp.swift in Sources */,
 				4CEEC35C2849309C00C979B3 /* FactoryDemoApp+Injection.swift in Sources */,
+				E18B2CF7287ED0E700E4FC58 /* ApiService.swift in Sources */,
+				E18B2CEF287ECFD400E4FC58 /* ListViewInteractor.swift in Sources */,
+				E18B2CF3287ECFD400E4FC58 /* ListViewModule.swift in Sources */,
 				4CEEC3602849311000C979B3 /* ContentViewModel.swift in Sources */,
+				E18B2CEE287ECFD400E4FC58 /* ListViewPresenter.swift in Sources */,
+				E18B2CF9287ED17B00E4FC58 /* VIPER.swift in Sources */,
+				E18B2CF2287ECFD400E4FC58 /* ListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
