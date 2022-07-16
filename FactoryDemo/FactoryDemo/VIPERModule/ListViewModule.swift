@@ -12,7 +12,7 @@ import Factory
 // MARK: - Router
 
 protocol ListViewRouterInterface: ListViewRouterPresenterInterface {
-    var presenter: ListViewPresenterRouterInterface! { get set }
+    /*weak*/ var presenter: ListViewPresenterRouterInterface { get set }
 }
 
 protocol ListViewRouterPresenterInterface: AnyObject {
@@ -22,8 +22,9 @@ protocol ListViewRouterPresenterInterface: AnyObject {
 // MARK: - Presenter
 
 protocol ListViewPresenterInterface: ListViewPresenterRouterInterface, ListViewPresenterInteractorInterface, ListViewPresenterViewInterface {
-    var router: ListViewRouterPresenterInterface! { get set }
-    var interactor: ListViewInteractorPresenterInterface! { get set }
+    var router: ListViewRouterPresenterInterface { get set }
+    var interactor: ListViewInteractorPresenterInterface { get set }
+    /*weak*/ var viewModel: ListViewModel? { get set }
 }
 
 protocol ListViewPresenterRouterInterface: AnyObject {
@@ -35,7 +36,6 @@ protocol ListViewPresenterInteractorInterface: AnyObject {
 }
 
 protocol ListViewPresenterViewInterface: AnyObject {
-    var viewModel: ListViewModel? { get set }
     func onAppear()
     func onBtnPress(animal: String)
 }
@@ -43,7 +43,7 @@ protocol ListViewPresenterViewInterface: AnyObject {
 // MARK: - Interactor
 
 protocol ListViewInteractorInterface: ListViewInteractorPresenterInterface {
-    var presenter: ListViewPresenterInteractorInterface! { get set }
+    /*weak*/ var presenter: ListViewPresenterInteractorInterface { get set }
 }
 
 protocol ListViewInteractorPresenterInterface: AnyObject {
@@ -62,7 +62,7 @@ extension SharedContainer {
             vm.animals = [Animal(name: "Horse")]
             return vm
         }
-        ListViewContainer.presenter.register { MockListViewPresenter() }
+        ListViewContainer.presenterView.register { ListViewPresenter() }
 
 #if DEBUG
         Decorator.decorate = {
@@ -92,9 +92,15 @@ extension SharedContainer {
 
 class ListViewContainer: SharedContainer {
     static let viewModel = Factory<ListViewModel>(scope: .shared) { ListViewModel() }
-    static let presenter = Factory<ListViewPresenterInterface>(scope: .shared) { ListViewPresenter() }
-    static let interactor = Factory<ListViewInteractorInterface>(scope: .shared) { ListViewInteractor() }
-    static let router = Factory<ListViewRouterInterface>(scope: .shared) { ListViewRouter() }
+    static let presenter = Factory<ListViewPresenter>(scope: .shared) { ListViewPresenter() }
+    static let interactor = Factory<ListViewInteractor>(scope: .shared) { ListViewInteractor() }
+    static let router = Factory<ListViewRouter>(scope: .shared) { ListViewRouter() }
+    
+    static let routerPresenter  = Factory<ListViewRouterPresenterInterface>(scope: .shared) { router() }
+    static let interactorPresenter = Factory<ListViewInteractorPresenterInterface>(scope: .shared) { interactor() }
+    static let presenterView = Factory<ListViewPresenterViewInterface>(scope: .shared) { presenter() }
+    static let presenterInteractor  = Factory<ListViewPresenterInteractorInterface>(scope: .shared) { presenter() }
+    static let presenterRouter = Factory<ListViewPresenterRouterInterface>(scope: .shared) { presenter() }
 }
 
 final class ListViewModule {
@@ -104,12 +110,7 @@ final class ListViewModule {
     @Injected(ListViewContainer.router) private var router
 
     func build() -> some View {
-        presenter.viewModel = self.viewModel
-        presenter.router = (self.router as ListViewRouterPresenterInterface)
-        presenter.interactor = (self.interactor as ListViewInteractorPresenterInterface)
-        let view = ListView(presenter: (self.presenter as ListViewPresenterViewInterface))
-        interactor.presenter = (self.presenter as ListViewPresenterInteractorInterface)
-        router.presenter = (self.presenter as ListViewPresenterRouterInterface)
+        let view = ListView()
         return view
     }
 }

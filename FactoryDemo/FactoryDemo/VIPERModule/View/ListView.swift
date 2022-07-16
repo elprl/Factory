@@ -10,7 +10,7 @@ import SwiftUI
 import Factory
 
 struct ListView: View {
-    var presenter: ListViewPresenterViewInterface!
+    @Injected(ListViewContainer.presenterView) private var presenter
     @Injected(ListViewContainer.viewModel) private var viewModel
 
     var body: some View {
@@ -30,6 +30,6 @@ struct ListView: View {
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
         let _ = SharedContainer.setupListViewPreviewMocks()
-        ListView(presenter: MockListViewPresenter())
+        ListView()
     }
 }

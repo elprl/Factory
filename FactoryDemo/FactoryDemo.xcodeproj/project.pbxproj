@@ -198,16 +198,64 @@
 		E18B2CE5287ECFBA00E4FC58 /* VIPERModule */ = {
 			isa = PBXGroup;
 			children = (
-				E18B2CF6287ED0E700E4FC58 /* ApiService.swift */,
-				E18B2CE6287ECFBA00E4FC58 /* AnimalEntity.swift */,
-				E18B2CE7287ECFBA00E4FC58 /* ListViewInteractor.swift */,
-				E18B2CE8287ECFBA00E4FC58 /* ListView.swift */,
-				E18B2CE9287ECFBA00E4FC58 /* ListViewPresenter.swift */,
-				E18B2CEA287ECFBA00E4FC58 /* ListViewRouter.swift */,
-				E18B2CEB287ECFBA00E4FC58 /* ListViewModel.swift */,
 				E18B2CEC287ECFBA00E4FC58 /* ListViewModule.swift */,
+				E18B2CFA28832DD100E4FC58 /* View */,
+				E18B2CFC28832DE300E4FC58 /* Presenter */,
+				E18B2CFB28832DD700E4FC58 /* Interactor */,
+				E18B2CFD28832DE900E4FC58 /* Entities */,
+				E18B2CFE28832DF200E4FC58 /* Router */,
+				E18B2CFF28832E0900E4FC58 /* Services */,
 			);
 			path = VIPERModule;
+			sourceTree = "<group>";
+		};
+		E18B2CFA28832DD100E4FC58 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E18B2CE8287ECFBA00E4FC58 /* ListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E18B2CFB28832DD700E4FC58 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				E18B2CE7287ECFBA00E4FC58 /* ListViewInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		E18B2CFC28832DE300E4FC58 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				E18B2CEB287ECFBA00E4FC58 /* ListViewModel.swift */,
+				E18B2CE9287ECFBA00E4FC58 /* ListViewPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E18B2CFD28832DE900E4FC58 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				E18B2CE6287ECFBA00E4FC58 /* AnimalEntity.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		E18B2CFE28832DF200E4FC58 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				E18B2CEA287ECFBA00E4FC58 /* ListViewRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		E18B2CFF28832E0900E4FC58 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E18B2CF6287ED0E700E4FC58 /* ApiService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -10,7 +10,7 @@ import SwiftUI
 import Factory
 
 final class ListViewRouter: ListViewRouterInterface {
-    weak var presenter: ListViewPresenterRouterInterface!
+    @WeakLazyInjected(ListViewContainer.presenterRouter) var presenter
 }
 
 extension ListViewRouter: ListViewRouterPresenterInterface {
