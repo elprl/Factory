@@ -12,7 +12,7 @@ import Factory
 // MARK: - Router
 
 protocol ListViewRouterInterface: ListViewRouterPresenterInterface {
-    /*weak*/ var presenter: ListViewPresenterRouterInterface { get set }
+    /*weak*/ var presenter: ListViewPresenterRouterInterface? { get set }
 }
 
 protocol ListViewRouterPresenterInterface: AnyObject {
@@ -43,7 +43,7 @@ protocol ListViewPresenterViewInterface: AnyObject {
 // MARK: - Interactor
 
 protocol ListViewInteractorInterface: ListViewInteractorPresenterInterface {
-    /*weak*/ var presenter: ListViewPresenterInteractorInterface { get set }
+    /*weak*/ var presenter: ListViewPresenterInteractorInterface? { get set }
 }
 
 protocol ListViewInteractorPresenterInterface: AnyObject {

@@ -8,7 +8,7 @@
 import Foundation
 import Factory
 
-final class ListViewInteractor: ListViewInteractorInterface {
+final class ListViewInteractor: ListViewInteractorInterface {    
     @WeakLazyInjected(ListViewContainer.presenterInteractor) var presenter
     @Injected(Container.apiService) private var apiService
 }
