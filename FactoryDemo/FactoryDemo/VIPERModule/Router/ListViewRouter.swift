@@ -16,6 +16,6 @@ final class ListViewRouter: ListViewRouterInterface {
 extension ListViewRouter: ListViewRouterPresenterInterface {
     
     func showDetails(for animal: Animal) -> any View {
-        return EmptyView()
+        return Text(animal.name)
     }
 }

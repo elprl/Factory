@@ -30,33 +30,13 @@ extension ListViewPresenter: ListViewPresenterViewInterface {
         
     }
     
-    func onBtnPress(animal: String) {
-        print("\(animal) pressed")
+    func onBtnPress(animal: Animal) {
+        print("\(animal.name) pressed")
+        let _ = router.showDetails(for: animal)
+        // update view
     }
 }
 
 extension ListViewPresenter: ListViewPresenterRouterInterface {
     
 }
-
-//final class MockListViewPresenter: ListViewPresenterInterface {
-//    func didLoad(animals: [Animal]) {
-//
-//    }
-//
-//    var router: ListViewRouterPresenterInterface
-//    var interactor: ListViewInteractorPresenterInterface
-//    weak var viewModel: ListViewModel?
-//
-//    func onAppear() {
-//        print("Mocking onAppear")
-//    }
-//
-//    func onDisappear() {
-//
-//    }
-//
-//    func onBtnPress(animal: String) {
-//        print("\(animal) pressed")
-//    }
-//}

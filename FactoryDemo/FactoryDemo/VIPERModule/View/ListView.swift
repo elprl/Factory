@@ -16,7 +16,7 @@ struct ListView: View {
     var body: some View {
         List(viewModel.animals) { animal in
             Button {
-                self.presenter.onBtnPress(animal: animal.name)
+                self.presenter.onBtnPress(animal: animal)
             } label: {
                 Text(animal.name)
             }

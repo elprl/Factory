@@ -37,7 +37,7 @@ protocol ListViewPresenterInteractorInterface: AnyObject {
 
 protocol ListViewPresenterViewInterface: AnyObject {
     func onAppear()
-    func onBtnPress(animal: String)
+    func onBtnPress(animal: Animal)
 }
 
 // MARK: - Interactor
