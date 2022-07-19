@@ -105,12 +105,9 @@ class ListViewContainer: SharedContainer {
 
 final class ListViewModule {
     @Injected(ListViewContainer.viewModel) private var viewModel
-    @Injected(ListViewContainer.presenter) private var presenter
-    @Injected(ListViewContainer.interactor) private var interactor
-    @Injected(ListViewContainer.router) private var router
 
     func build() -> some View {
-        let view = ListView()
+        let view = ListView(viewModel: viewModel)
         return view
     }
 }

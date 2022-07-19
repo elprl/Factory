@@ -11,7 +11,7 @@ import Factory
 
 struct ListView: View {
     @Injected(ListViewContainer.presenterView) private var presenter
-    @Injected(ListViewContainer.viewModel) private var viewModel
+    @ObservedObject var viewModel: ListViewModel
 
     var body: some View {
         List(viewModel.animals) { animal in
@@ -30,6 +30,6 @@ struct ListView: View {
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
         let _ = SharedContainer.setupListViewPreviewMocks()
-        ListView()
+        ListView(viewModel: ListViewContainer.viewModel())
     }
 }

@@ -16,7 +16,10 @@ final class ListViewInteractor: ListViewInteractorInterface {
 extension ListViewInteractor: ListViewInteractorPresenterInterface {
 
     func fetchItems() {
-        let animals = apiService.fetchAnimalNames().map { Animal(name: $0) }
-        presenter?.didLoad(animals: animals)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) { [weak self] in
+            guard let self = self else { return }
+            let animals = self.apiService.fetchAnimalNames().map { Animal(name: $0) }
+            self.presenter?.didLoad(animals: animals)
+        }
     }
 }
